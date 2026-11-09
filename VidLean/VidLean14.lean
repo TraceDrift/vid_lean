@@ -1,0 +1,25 @@
+import Mathlib
+import VidLean12
+
+-- VIDLEAN BUILD VidLean14-v3-20261109
+
+set_option linter.unusedVariables false
+set_option linter.style.haveILetI false
+set_option linter.tacticAnalysis.introMerge false
+
+noncomputable section
+
+namespace VidLean14
+
+open VidLean8 VidLean9 VidLean12
+
+theorem cross_band_isOrtho (S : SelectionOperator) (A B : S.poset)
+    (hAB : ¬ BandRel S A B) :
+    Submodule.IsOrtho (H S A) (H S B) := by
+  rw [Submodule.isOrtho_iff_le]
+  intro u hu
+  rw [Submodule.mem_orthogonal']
+  intro w hw
+  exact cross_band_orthogonal S A B hAB u hu w hw
+
+end VidLean14
