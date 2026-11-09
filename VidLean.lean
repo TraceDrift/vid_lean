@@ -1,3 +1,11 @@
 import VidLean.Basic
-import VidLean.Selection
-import VidLean.Singularity
+import VidLean.Section5
+import VidLean.VidLean7
+import VidLean.VidLean8
+import VidLean.VidLean9
+import VidLean.VidLean10
+import VidLean.VidLean11
+import VidLean.VidLean12
+import VidLean.VidLean14
+import VidLean.VidLean15
+import VidLean.VidLean16

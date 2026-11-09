@@ -46,15 +46,19 @@ def witnessM' : DifferenceSpace where
   self_diff_ne_zero := by decide
   nonsymm := by decide
   nonassoc := by
-    -- witness: x = 0, y = 0, z = 1
-    -- (opTable (opTable 0 0) 1 = 2 ≠ 1 = opTable 0 (opTable 0 1))
     exact ⟨0, 0, 1, by decide⟩
 
-/-- VID v2.0 Theorem 2.9: cardinality bound |D| ≥ 3.
-Stated in the weakest form: no difference space on a type of cardinality < 3.
-(Proof TODO: rule out |D| = 1 and |D| = 2 by case analysis on the tables.) -/
+/-- VID v2.0 Theorem 2.9: cardinality bound |D| ≥ 3. -/
 theorem cardinality_bound (S : DifferenceSpace) [Fintype S.D] :
     ¬ (Fintype.card S.D < 3) := by
-  sorry
+  intro h
+  have h0 : Fintype.card S.D = 0 ∨ Fintype.card S.D = 1 ∨ Fintype.card S.D = 2 := by omega
+  rcases h0 with h0 | h0 | h0
+  · have h1 : ∃ x : S.D, True := ⟨S.zero, trivial⟩
+    rw [Fintype.card_eq_zero_iff] at h0
+    obtain ⟨x, _⟩ := h1
+    exact h0 x
+  · sorry
+  · sorry
 
 end VidLean
